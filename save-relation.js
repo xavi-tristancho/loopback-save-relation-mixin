@@ -125,9 +125,10 @@ module.exports = (Model, options) => {
     relationName,
     relatedObjects
   }) {
+    const includeRelation = instance[relationName]() ? {} : {include: relationName }
     return Model.findById(
       instance.id,
-      { include: relationName },
+      includeRelation,
       { isFromNodeJS: true }
     )
       .then(currentInstance =>
