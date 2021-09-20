@@ -125,7 +125,7 @@ module.exports = (Model, options) => {
     relationName,
     relatedObjects
   }) {
-    let includeRelation = instance[relationName]() ? {} : {include: relationName }
+    const includeRelation = instance[relationName]() ? {} : {include: relationName }
     return Model.findById(
       instance.id,
       includeRelation,
